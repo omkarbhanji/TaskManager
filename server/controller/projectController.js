@@ -34,9 +34,10 @@ exports.getAllProjects = async(req, res) => {
 };
 
 exports.getProjectById = async(req, res) => {
-    const projectId = req.params.id;
+    const projectId = parseInt(req.params.id);
 
   try {
+     console.log("datatype is: ",typeof projectId);
     const projectRes = await pool.query(
       `SELECT * FROM projects WHERE id = $1`,
       [projectId]
@@ -67,9 +68,9 @@ exports.updateProject = async(req, res) => {
   const { name, description } = req.body;
 
   try {
+    console.log("datatype is: ",typeof projectId);
     const existing = await pool.query(
-      `SELECT * FROM projects WHERE id = $1`,
-      [projectId]
+      `SELECT * FROM projects WHERE id = ${projectId}`
     );
 
     if (existing.rows.length === 0) {
@@ -98,8 +99,8 @@ exports.deleteProject = async(req, res) => {
   try {
 
     const existing = await pool.query(
-      `SELECT * FROM projects WHERE id = $1`,
-      [projectId]
+      `SELECT * FROM projects WHERE id = ${projectId}`
+      
     );
 
     if (existing.rows.length === 0) {
