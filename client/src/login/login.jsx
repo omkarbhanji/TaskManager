@@ -44,7 +44,7 @@ const Login = () => {
 
   useEffect(() => {
     if (loginSuccess) {
-      navigate("/");
+      navigate("/project-dashboard");
     }
   }, [loginSuccess, navigate]);
 

@@ -12,7 +12,7 @@ const ProjectCard = ({project}) => {
 
   return (
     <div>
-      <Card style={{ width: '18rem' }}>
+      <Card className="project-card" style={{ width: '100%' }}>
       
       <Card.Body>
         <Card.Title>{project.name}</Card.Title>

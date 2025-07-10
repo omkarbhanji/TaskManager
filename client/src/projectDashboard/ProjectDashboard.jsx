@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-
+import './ProjectDashboard.css';
 import ProjectCard from "./ProjectCard";
 import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
@@ -35,9 +35,9 @@ const ProjectDashboard =  (req, res) => {
   };
 
   return (
-    <div>
+    <div className="dashboard-container">
       <h2>All Projects</h2>
-
+<div className="project-cards-grid">
       {projects.map((project) => (
         <ProjectCard
           key={project.id}
@@ -45,7 +45,7 @@ const ProjectDashboard =  (req, res) => {
           onClick = {handleProjectClick}
         />
       ))}
-
+  </div>
     </div>
   );
 };

@@ -10,6 +10,7 @@ import Home from './Home';
 import Unauthorized from './ErrorPages/Unauthorized';
 import ProtectedRoute from './ProtectedRoutes';
 import ProjectDetails from './ProjectDetails/ProjectDetails';
+import AddNewTask from './ProjectDetails/AddNewTask';
 
 function App() {
   
@@ -18,11 +19,13 @@ function App() {
    <div className='App'>
     <Router>
       <Routes>
+        
         <Route path = '/signup' element = {<SignUp/>} />
         <Route path = '/login' element = {<Login/>} />
         <Route path='/project-dashboard' element = {<ProtectedRoute requiredRoles={['Manager', 'Employee']}><ProjectDashboard/></ProtectedRoute>} />
         <Route path = '/unauthorized' element = {<Unauthorized/>} />
-        <Route path='/projects/:id' element = {<ProjectDetails/>} />
+        <Route path='/projects/:id' element = {<ProtectedRoute requiredRoles={['Manager', 'Employee']}><ProjectDetails/></ProtectedRoute>} />
+        <Route path='/projects/:id/add-task' element={<ProtectedRoute requiredRoles={['Manager']}><AddNewTask /></ProtectedRoute>} />
         <Route path='/' element = {<Home/>} />
       </Routes>
     </Router>
