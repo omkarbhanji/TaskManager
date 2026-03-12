@@ -1,7 +1,11 @@
+require('dotenv').config();
+
+const JWT_SECRET = process.env.JWT_SECRET
+
 // this is basically going to be used to protect routes 
 
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'HELLO THIS IS A SECRET';
+
 
 exports.protect = (req, res, next) => {
     const authHeader = req.headers.authorization;
